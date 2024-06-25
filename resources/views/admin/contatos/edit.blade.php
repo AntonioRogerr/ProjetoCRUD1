@@ -28,21 +28,28 @@
             <label for="sobrenome">Sobrenome:</label>
             <input type="text" id="sobrenome" name="sobrenome" class="form-control" placeholder="Digite um sobrenome" value="{{ old('sobrenome',$contatos->sobrenome) }}">
         </div>
-        
+
         <div class="form-group">
-            <label for="idade">Idade:</label>
-            <input type="number" id="idade" name="idade" class="form-control" placeholder="Digite uma idade" value="{{ old('idade', $contatos->idade) }}">
+            <label for="data_nascimento">Data de Nascimento:</label>
+            <input type="date" id="data_nascimento" name="data_nascimento" class="form-control" placeholder="Digite sua data de nascimento" value="{{ old('data_nascimento', $contatos->data_nascimento) }}">
         </div>
+
+        {{-- <div class="form-group">
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" name="idade" class="form-control" placeholder="Digite uma idade" value="{{ old('idade') }}">
+        </div> --}}
 
         <div class="form-group">    
             <label for="telefone">Telefone:</label>
-            <input type="text" id="telefone" name="telefone" class="form-control" placeholder="Digite um número de telefone"value="{{ old('telefone',$contatos->telefone) }}">
+            <input type="text" id="telefone" name="telefone" class="form-control" placeholder="Digite um número de telefone"value="{{ old('telefone',$contatos->telefone) }}" maxlength="11">
+            <small>Digite apenas o número com o DDD, sem espaços ou outros caracteres.</small>
         </div>
         
         <div class="form-group">
             <label for="email">E-mail:</label>
             <input type="email" id="email" name="email"  class="form-control"placeholder="Digite um e-mail" value="{{ old('email', $contatos->email) }}">
         </div>
+        <br>
         <div class="d-flex justify-content-center w-100">
             <input type="submit" value="Atualizar" class="btn btn-primary m-1"> 
 

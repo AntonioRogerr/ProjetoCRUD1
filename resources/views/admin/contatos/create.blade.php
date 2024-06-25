@@ -28,13 +28,14 @@
         </div>
 
         <div class="form-group">
-            <label for="idade">Idade:</label>
-            <input type="number" id="idade" name="idade" class="form-control" placeholder="Digite uma idade" value="{{ old('idade') }}">
+            <label for="data_nascimento">Data de Nascimento:</label>
+            <input type="date" id="data_nascimento" name="data_nascimento" class="form-control" placeholder="Digite sua data de nascimento" value="{{ old('data_nascimento') }}">
         </div>
 
         <div class="form-group">
             <label for="telefone">Telefone:</label>
-            <input type="text" id="telefone" name="telefone" class="form-control" placeholder="Digite um número de telefone" pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})" required value="{{ old('telefone') }}">
+            <input type="text" id="telefone" name="telefone" class="form-control" placeholder="Digite um número de telefone" required value="{{ old('telefone') }}" maxlength="11">
+            <small>Digite apenas o número com o DDD, sem espaços ou outros caracteres.</small>
         </div>
 
         <div class="form-group">

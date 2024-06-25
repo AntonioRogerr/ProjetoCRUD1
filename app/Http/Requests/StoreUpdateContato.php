@@ -25,11 +25,11 @@ class StoreUpdateContato extends FormRequest
         $rules = [
             'nome' => 'required|string|max:255',
             'sobrenome' => 'required|string|max:255',
-            'idade' => 'required|integer|min:1',
+            'data_nascimento' => 'required|date',
             'telefone' => [
                 'required',
                 'string',
-                'max:20',
+                'max:11',
                 'unique:contatos',
             ],
             'email' => [

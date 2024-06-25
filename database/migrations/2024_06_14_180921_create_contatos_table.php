@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('sobrenome');
-            $table->unsignedInteger('idade'); //Apenas valores positivos!!!
+            $table->date('data_nascimento');
             $table->string('telefone'); 
             $table->string('email');
             $table->timestamps();

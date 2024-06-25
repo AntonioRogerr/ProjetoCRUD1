@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateContato;
 use App\Models\Contato;
+use App\Models\Facade\ContatosDB;
 use Illuminate\Http\Request;
 
 class ContatoController extends Controller
 {
-    public function index(Contato $contato)
+    public function index()
     {
-        $contatos = $contato->all();
+        $contatos = ContatosDB::gridContatos();
 
         return view('admin/contatos/index', compact('contatos'));
     }
@@ -32,7 +33,8 @@ class ContatoController extends Controller
 
     public function edit($id)
     {
-        $contatos = Contato::where('id', $id)->first();
+        $contatos = ContatosDB::getById($id);
+
         if(!empty($contatos))
         {
             return view('admin/contatos/edit', compact('contatos'));
@@ -72,5 +74,17 @@ class ContatoController extends Controller
         $contato->delete();
 
         return redirect()->route('contatos.index');
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $contatos = Contato::where('nome', 'like', '%'.$search.'%')
+                            ->orWhere('sobrenome', 'like', '%'.$search.'%')
+                            ->get();
+
+        //O % é usado para buscar por qualquer ocorrência do texto, antes ou depois do texto inserido.
+        return view('admin/contatos/index', compact('contatos'));
     }
 }
